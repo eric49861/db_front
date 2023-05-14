@@ -13,33 +13,50 @@
     <el-menu-item index="3">动态</el-menu-item>
     <el-menu-item index="4">活动</el-menu-item>
     <div class="flex-grow" />
-    <el-menu-item index="5" v-if="!loginStatus">登录</el-menu-item>
+    <el-menu-item index="5" v-if="!loginStatus" >登录</el-menu-item>
     <el-menu-item index="6" v-if="!loginStatus">注册</el-menu-item>
-  
+    <Login :loginVisiable="loginVisiable" @cancel="cancelLogin"/>
   </el-menu>
 </template>
 
 <script>
-import { ref } from 'vue';
+import Login from '../login/Login.vue';
 
 export default {
-    name: 'Header',
-    data() {
-        return {
-          activeIndex: ref('1'),
-          loginStatus: false,
-          centerDialogVisiable: false
+  components: { Login },
+  name: 'Header',
+  data() {
+    return {
+      activeIndex: '1',
+      loginStatus: false,
+      loginVisiable: false,
+      signVisiable: false,
+    }
+  },
+  methods: {
+    handleSelect: function (index) {
+      switch (index) {
+        case '5': {
+          console.log(5)
+          this.loginVisiable = true;
+          break;
         }
-    },
-    methods: {
-      handleSelect: function (index) {
-          if (index == 5 || index == 6) {
-            this.centerDialogVisiable = true
-          }
+        case '6': {
+          console.log(6)
+          this.signVisiable = true;
+          break;
+        }
+        default: {
           this.activeIndex.value = index
         }
+      }
+    },
+    cancelLogin: function () {
+      this.loginVisiable = false
     }
-};
+  }
+}
+    
 </script>
 
 <style scoped>
