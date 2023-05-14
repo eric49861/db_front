@@ -1,8 +1,4 @@
 <template>
-  <el-button text @click="centerDialogVisible = true">
-    Click to open the Dialog
-  </el-button>
-
   <el-dialog
     v-model="centerDialogVisible"
     title="Warning"
@@ -20,10 +16,24 @@
     </template>
   </el-dialog>
 </template>
-<script lang="ts" setup>
+<script>
 import { ref } from 'vue'
+export default{
+    name: "Login",
+    props:{
+        centerDialogVisible:{
+            type: Boolean,
+            required: true            
+        }
+    ,
+    data(){
+        return{
+            
+        }
+    }
 
-const centerDialogVisible = ref(false)
+}
+
 </script>
 <style scoped>
 .dialog-footer button:first-child {
