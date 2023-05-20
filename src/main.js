@@ -8,7 +8,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 //导入打字机特效插件
 import vuetyped from 'vue3typed'
 
-import router from '../public/js/router'
+import router from './router/router'
 
 const app = createApp(App)
 app.use(ElementPlus)

@@ -6,39 +6,25 @@
             <el-affix class="affix">
                 <StartHeader/>
             </el-affix>
-            <el-carousel-item key="1" class="page page1">
+            <el-carousel-item v-for="item in 3" :key="item" :class="'page' + item" class="page">
                 <div class="text-container">
-                    <vuetyped :strings="text[0]" :loop="false" :smart-backspace="true">
+                    <vuetyped :strings="text[item-1]" :loop="false" :smart-backspace="true">
                         <div class="typing" />
                     </vuetyped>
                 </div>
             </el-carousel-item>
-            <el-carousel-item key="2" class="page page2">
-                <div class="text-container">
-                    <vuetyped :strings="text[1]" :loop="false" :smart-backspace="true">
-                        <div class="typing" />
-                    </vuetyped>
-                </div>
-            </el-carousel-item>
-            <el-carousel-item key="3" class="page page3">
-                    <div class="text-container">
-                        <vuetyped :strings="text[2]" :loop="false" :smart-backspace="true">
-                            <div class="typing" />
-                        </vuetyped>
-                    </div>
-                </el-carousel-item>
         </el-carousel>
     </div>
 </template>
 
 <script>
-import StartHeader from '../layout/StartHeader.vue'
+import StartHeader from './components/StartHeader.vue'
 
 export default {
     components: {
         StartHeader
     },
-    name: "StartPage",
+    name: "Start",
     data() {
         return {
             allow: true,

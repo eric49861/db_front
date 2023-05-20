@@ -74,8 +74,8 @@
 
 <script>
 import Calendar from 'mpvue-calendar'
-import StudyGroup from '../display/StudyGroup.vue'
-import DataStatistic from '../display/DataStatistic.vue'
+import StudyGroup from './components/StudyGroup.vue'
+import DataStatistic from './components/DataStatistic.vue'
 
 import { ref } from 'vue'
 

@@ -1,11 +1,5 @@
 <template>
-    <el-menu
-        :default-active="activeIndex"
-        class="el-menu"
-        mode="horizontal"
-        :ellipsis="false"
-        @select="handleSelect"
-    >
+    <el-menu :default-active="activeIndex" class="el-menu" mode="horizontal" :ellipsis="false" @select="handleSelect">
         <el-menu-item index="0" disabled style="color:white; font-weight: 800;">
             LOGO
         </el-menu-item>
@@ -23,7 +17,7 @@
 export default {
     components: {},
     name: 'Header',
-    
+
     data() {
         return {
             routeToIndex: {
@@ -32,7 +26,7 @@ export default {
                 '/zone': '3',
                 '/activity': '4'
             },
-            
+
         }
     },
     methods: {
@@ -61,11 +55,12 @@ export default {
 </script>
 
 <style scoped>
-.el-menu{
+.el-menu {
     align-items: center;
     background-color: #ffffff;
 }
+
 .flex-grow {
-  flex-grow: 1;
+    flex-grow: 1;
 }
 </style>

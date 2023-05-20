@@ -1,14 +1,14 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Start from '../../src/components/main/Start.vue'
-import Index from '../../src/components/main/Index.vue'
-import Zone from '../../src/components/main/Zone.vue'
-import Activity from '../../src/components/main/Activity.vue'
-import Square from '../../src/components/main/Square.vue'
+import StartPage from '../views/Start/Start.vue'
+import Index from '../views/Index/Index.vue'
+import Zone from '../views/Zone/Zone.vue'
+import Activity from '../views/Activity/Activity.vue'
+import Square from '../views/Square/Square.vue'
 
 const routes = [
     {
         path: '/',
-        component: Start,
+        component: StartPage,
     },
     {
         path: '/index',
