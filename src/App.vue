@@ -1,21 +1,12 @@
 <template>
-    <div class="global-layout">
-        <el-container>
-            <el-header style="padding: 0 0px;" v-show="show">
-                <Header/>
-            </el-header>
-            <el-main style="padding: 0 0px;">
-                <router-view />
-            </el-main>
-        </el-container>
-    </div>
+    <router-view name="app"/>
 </template>
 
 <script>
-import Header from '../src/components/Header.vue'
+
 export default {
     components: {
-        Header
+        
     },
     data() {
         return {
