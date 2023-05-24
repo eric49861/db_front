@@ -2,11 +2,10 @@
     <div class="card-container">
         <el-card class="encourage-card" shadow="always">
             <vuetyped :strings="statement" :loop="false" :smart-backspace="true">
-                <div class="typing"/>
+                <div class="typing"></div>
             </vuetyped>
         </el-card>
     </div>
-  
 </template>
 
 <script>
