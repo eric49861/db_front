@@ -1,6 +1,16 @@
 import service from './index'
 
 export default {
+    login: (form) => {
+        return  service({
+            url: "/v1/1/login",
+            method: "POST",
+            data: {
+                name: form.username,
+                password: form.password
+            }
+        })
+    },
     getIngGroup: () => {
         return service({
             url: "/v1/getGroup/ing",
