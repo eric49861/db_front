@@ -38,9 +38,7 @@ export default {
     data() {
         return {
             activeName: "ing",
-            groupIng: {
-                imgLink: "https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-            },
+            groupIng: {},
             // groupEd:,
         }
     },
@@ -49,9 +47,12 @@ export default {
             let tabName = tab.props.name
             switch (tabName) {
                 case "ing": {
+                    let that = this
                     //todo:通过网络获取正在进行的小组
                     api.getIngGroup().then(function (res) {
-                        console.log(res)
+                        let data = JSON.parse(res.data)["groups"]
+                        that.groupIng = data[0]
+                        // console.log(JSON.parse(res.data)["groups"])
                     })
                     break
                 }
@@ -78,6 +79,15 @@ export default {
                 }
             }
         }
+    },
+    mounted() {
+        let that = this
+        //todo:通过网络获取正在进行的小组
+        api.getIngGroup().then(function (res) {
+            let data = JSON.parse(res.data)["groups"]
+            that.groupIng = data[0]
+            // console.log(JSON.parse(res.data)["groups"])
+        })
     }
 }
 </script>

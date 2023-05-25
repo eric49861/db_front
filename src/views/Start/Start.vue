@@ -1,6 +1,5 @@
 <template>
     <div class="swiper-box">
-        
         <el-carousel height="100vh" direction="vertical" :autoplay="false" ref="carousel"
             @mousewheel="rollScroll" trigger="click" :loop="false">
             <el-affix class="affix">
