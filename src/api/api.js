@@ -3,25 +3,25 @@ import service from './index'
 export default {
     getIngGroup: () => {
         return service({
-            url: "v1/getGroup/ing",
+            url: "/v1/getGroup/ing",
             methods: "GET"
         })
     },
     getEdGroup: () => {
         return service({
-            url: "v1/getGroup/ed",
+            url: "/v1/getGroup/ed",
             methods: "GET"
         })
     },
     getAllGroup: () => {
         return service({
-            url: "v1/getGroup/all",
+            url: "/v1/getGroup/all",
             methods: "GET"
         })
     },
     getMyGroup: () => {
         return service({
-            url: "v1/getGroup/mine",
+            url: "/v1/getGroup/mine",
             methods: "GET"
         })
     }
