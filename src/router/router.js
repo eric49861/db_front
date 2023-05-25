@@ -6,14 +6,41 @@ import Activity from '../views/Activity/Activity.vue'
 import FindGroup from '../views/FindGroup/FindGroup.vue'
 import MyInfo from '../views/MyInfo/MyInfo.vue'
 import Index from '../views/Index/Index.vue'
+import Login from '../views/Login/Login.vue'
+import Signup from '../views/Login/Signup.vue'
+import NotFund from '../views/Error/NotFund.vue'
 
 const routes = [
+    {
+        path: "/404",
+        components: {
+            default: NotFund,
+            404: NotFund,
+        }
+    },
     {
         path: '/',
         components: {
             default: Start,
             app: Start
         },
+        children: [
+            
+        ]
+    },
+    {
+        path: '/login',
+        components: {
+            default: Login,
+            login: Login
+        }
+    },
+    {
+        path: '/signup',
+        components: {
+            default: Signup,
+            signup: Signup
+        }
     },
     {
         path: '/index',
