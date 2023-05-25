@@ -114,5 +114,20 @@ export default {
                 }
             ]
         }
+    },
+    login: () => {
+        return {
+            code: 200,
+            user: {
+                id: 1,
+                name: "ERIC",
+                password: "85208520",
+                avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
+                QQ: "1585416826",
+                createTime: "2023/05/01 0:0:0",
+                updateTime: "2023/05/01 0:0:0",
+                integral: 100
+            }
+        }
     }
 }
