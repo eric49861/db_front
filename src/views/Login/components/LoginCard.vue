@@ -22,13 +22,14 @@
                         <div class="flex-grow"></div>
                     </el-form-item>
                 </div>
-
             </el-form>
         </el-card>
     </div>
 </template>
 
 <script>
+import api from '../../../api/api.js'
+
 export default {
     data() {
         return {
@@ -44,11 +45,29 @@ export default {
     },
     methods: {
         login() {
+            let that = this
             this.$refs.form.validate((valid) => {
                 if (valid) {
-                    // TODO: 登录逻辑
+                    // TODO: 发送网络请求，执行登录请求
+                    api.login(this.form)
+                        .catch((error) => {
+                            //如果登录失败，根据返回值确定是用户不存在或者密码错误
+                            //使用消息提示组件提示用户
+                            console.log("error", error)
+                        }).then(function(res) {
+                            console.log("res:", res)
+                            //将返回的用户数据存入store
+                            let user = JSON.parse(res.data)["user"]
+                            that.$store.dispatch("asyncUpdateUser", user)
+                            //成功登录后跳转到主页
+                            that.$router.push("/index")
+                        })
                 }
             });
+        },
+        cancel() {
+            //点击取消按钮，返回到开始页面
+            this.$router.push("/")
         },
         validatePassword(rule, value, callback) {
             if (!value) {
