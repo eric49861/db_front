@@ -13,11 +13,13 @@
     "core-js": "^3.6.5",
     "easy-typer-js": "^2.1.0",
     "element-plus": "^2.3.4",
+    "mockjs": "^1.1.0",
     "mpvue-calendar": "^3.0.1",
     "vue": "^3.0.0",
     "vue-router": "4",
     "vue-typed-js": "^0.1.2",
-    "vue3typed": "^0.1.5"
+    "vue3typed": "^0.1.5",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
