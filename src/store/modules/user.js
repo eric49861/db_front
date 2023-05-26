@@ -3,27 +3,20 @@ import router from '../../router/router'
 
 
 const user = {
-    state: window.sessionStorage.getItem("state") != null ? JSON.parse(window.sessionStorage.getItem("state")) : {
-        user:  {
-            
+    state: window.sessionStorage.getItem("user-state") != null ? JSON.parse(window.sessionStorage.getItem("user-state")) : {
+        user: {
+
         },
-        tokenString:""
     },
     getters: {
         getUser(state) {
             return state.user
-        },
-        getTokenString(state) {
-            return state.tokenString
         }
     },
     mutations: {
         updateUser(state, user) {
             state.user = user
         },
-        updateToken(state, tokenString) {
-            state.tokenString = tokenString
-        }
     },
     actions: {
         asyncUpdateUser(context, user) {
@@ -34,11 +27,37 @@ const user = {
             api.login(form).catch(function (err) {
                 console.log(err)
             }).then(function (res) {
+                console.log("data: ", res.data)
                 //如果响应成功，则保存用户数据并实现路由跳转
                 if (res.data.code == 200) {
+                    alert(res.data.msg)
                     let user = res.data.user
                     context.commit("updateUser", user)
                     router.push("/index")
+                } else if (res.data.code == 401) {
+                    //用户名或者密码错误
+                    alert(res.data.msg)
+                }
+            })
+        },
+        //注册
+        asyncSignup(context, form) {
+            api.signup(form).catch(function (err) {
+                console.log(err)
+            }).then(function (res) {
+                console.log("res: ", res.data)
+                //如果响应成功，则跳转至登录界面
+                if (res.data.code == 200) {
+                    //成功响应
+                    alert(res.data.msg)
+                    router.push("/login")
+                } else if (res.data.code == 500) {
+                    //服务器内部出错
+                    alert(res.data.msg)
+                    router.push("500")
+                } else if (res.data.code == 401) {
+                    //用户名已被占用
+                    alert(res.data.msg)
                 }
             })
         }
