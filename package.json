@@ -19,7 +19,8 @@
     "vue-router": "4",
     "vue-typed-js": "^0.1.2",
     "vue3typed": "^0.1.5",
-    "vuex": "^4.0.2"
+    "vuex": "^4.0.2",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
