@@ -54,7 +54,7 @@ export default {
         },
         cancel() {
             //点击取消按钮，返回到开始页面
-            this.$router.push("/")
+            this.$router.back()
         },
         validatePassword(rule, value, callback) {
             if (!value) {
@@ -72,22 +72,25 @@ export default {
 </script>
 
 <style scoped>
-.flex-grow{
+.flex-grow {
     flex-grow: 1;
 }
+
 .login-card {
     width: 400px;
     text-align: center;
     border-radius: 5%;
 }
-.logo{
+
+.logo {
     margin-bottom: 10px;
 }
-.logo > img{
+
+.logo>img {
     width: 30%;
 }
-.login-card-container{
+
+.login-card-container {
     background-color: rgba(255, 255, 255, 0.497);
 
-}
-</style>
+}</style>
