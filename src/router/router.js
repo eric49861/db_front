@@ -9,6 +9,10 @@ import Index from '../views/Index/Index.vue'
 import Login from '../views/Login/Login.vue'
 import Signup from '../views/Login/Signup.vue'
 import NotFund from '../views/Error/NotFund.vue'
+import ServerError from '../views/Error/ServerError.vue'
+
+import api from '../api/api'
+import store from '../store/index'
 
 const routes = [
     {
@@ -19,13 +23,20 @@ const routes = [
         }
     },
     {
+        path: "/500",
+        components: {
+            default: ServerError,
+            500: ServerError,
+        }
+    },
+    {
         path: '/',
         components: {
             default: Start,
             app: Start
         },
         children: [
-            
+
         ]
     },
     {
@@ -46,13 +57,13 @@ const routes = [
         path: '/index',
         components: {
             default: Index,
-            app:Index
+            app: Index
         },
         children: [
             {
                 path: 'default-page',
                 components: {
-                    default:DefaultPage,
+                    default: DefaultPage,
                     index: DefaultPage
                 },
             },
@@ -86,7 +97,7 @@ const routes = [
             }
         ]
     },
-    
+
 ]
 
 const router = createRouter({
@@ -94,4 +105,31 @@ const router = createRouter({
     routes,
 })
 
+// 添加路由守卫进行鉴权
+router.beforeEach((to, from, next) => {
+    console.log("topath: ", to.path)
+    console.log("frompath: ", from.path)
+    console.log("next: ", next)
+    if (to.path == "/login" || to.path == "/signup" || to.path == "/") {
+        next()
+    } else {
+        //检查是否有token
+        let tokenString = store.getters.getTokenString
+        if (tokenString == null) {
+            alert("请先进行登录")
+        } else {
+            //检查token是否有效，防止用户篡改
+            api.validateToken(tokenString).catch(function (err) {
+                return Promise.reject(err)
+            }).then(function (res) {
+                if (res.data.code == 200) {
+                    next()
+                } else {
+                    alert(res.data.msg)
+                }
+            })
+
+        }
+    }
+})
 export default router
