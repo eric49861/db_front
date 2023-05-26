@@ -11,6 +11,9 @@ const user = {
     getters: {
         getUser(state) {
             return state.user
+        },
+        getUserId(state) {
+            return state.user.id
         }
     },
     mutations: {
