@@ -1,3 +1,4 @@
+import store from '../store/index'
 import service from './index'
 
 export default {
@@ -24,6 +25,7 @@ export default {
             }
         })
     },
+    //验证token是否合法
     validateToken: (tokenString) => {
         return service({
             url: "v1/3/valid-token",
@@ -36,25 +38,37 @@ export default {
     getIngGroup: () => {
         return service({
             url: "/v1/getGroup/ing",
-            methods: "GET"
+            methods: "GET",
+            params: {
+                id: store.getters.getUserId
+            }
         })
     },
     getEdGroup: () => {
         return service({
             url: "/v1/getGroup/ed",
-            methods: "GET"
+            methods: "GET",
+            params: {
+                id: store.getters.getUserId
+            }
         })
     },
     getAllGroup: () => {
         return service({
             url: "/v1/getGroup/all",
-            methods: "GET"
+            methods: "GET",
+            params: {
+                id: store.getters.getUserId
+            }
         })
     },
     getMyGroup: () => {
         return service({
             url: "/v1/getGroup/mine",
-            methods: "GET"
+            methods: "GET",
+            params: {
+                id: store.getters.getUserId
+            }
         })
     }
 }
