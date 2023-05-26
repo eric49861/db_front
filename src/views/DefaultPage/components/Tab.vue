@@ -50,9 +50,8 @@ export default {
                     let that = this
                     //todo:通过网络获取正在进行的小组
                     api.getIngGroup().then(function (res) {
-                        let data = JSON.parse(res.data)["groups"]
+                        let data = res.data
                         that.groupIng = data[0]
-                        // console.log(JSON.parse(res.data)["groups"])
                     })
                     break
                 }
@@ -84,8 +83,8 @@ export default {
         let that = this
         //todo:通过网络获取正在进行的小组
         api.getIngGroup().then(function (res) {
-            let data = JSON.parse(res.data)["groups"]
-            that.groupIng = data[0]
+            let data = res.data
+            that.groupIng = data.groups[0]
             // console.log(JSON.parse(res.data)["groups"])
         })
     }
