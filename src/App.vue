@@ -16,16 +16,15 @@ export default {
             show: true,
         }
     },
-     watch: {
-         '$route'(to) {
-             if (to.path == '/') {
-                this.show = false
-             } else {
-                this.show = true
-            }
+    mounted() {
+        window.addEventListener("unload", this.saveState)
+    },
+    methods: {
+        saveState() {
+            //保存数据
+            window.sessionStorage.setItem("state", JSON.stringify(this.$store.state.user))
         }
     }
-
 };
 </script>
 

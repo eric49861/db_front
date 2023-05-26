@@ -120,7 +120,7 @@ export default {
             code: 200,
             user: {
                 id: 1,
-                name: "ERIC",
+                name: "HELLO WORLD",
                 password: "85208520",
                 avatar: "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
                 QQ: "1585416826",

@@ -28,7 +28,6 @@
 </template>
 
 <script>
-import api from '../../../api/api.js'
 
 export default {
     data() {
@@ -48,20 +47,8 @@ export default {
             let that = this
             this.$refs.form.validate((valid) => {
                 if (valid) {
-                    // TODO: 发送网络请求，执行登录请求
-                    api.login(this.form)
-                        .catch((error) => {
-                            //如果登录失败，根据返回值确定是用户不存在或者密码错误
-                            //使用消息提示组件提示用户
-                            console.log("error", error)
-                        }).then(function(res) {
-                            console.log("res:", res)
-                            //将返回的用户数据存入store
-                            let user = JSON.parse(res.data)["user"]
-                            that.$store.dispatch("asyncUpdateUser", user)
-                            //成功登录后跳转到主页
-                            that.$router.push("/index")
-                        })
+                    //执行登录请求
+                    that.$store.dispatch("asyncLogin", this.form)
                 }
             });
         },

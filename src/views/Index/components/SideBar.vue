@@ -1,13 +1,22 @@
 <template>
     <el-menu default-active="1" class="el-menu-vertical-demo" :collapse="isCollapse" @select="selectHandler">
         <el-menu-item index="0">
-            <div class="avatar" v-show="!isCollapse">
-                <el-avatar :size="60" src="https://empty" @error="errorHandler">
-                    <img
-                        :src="$store.getters.getUser.avatar"
-                    />
-                </el-avatar>
-            </div>
+            
+            <el-tooltip
+                :disabled="disabled"
+                :content="$store.getters.getUser.name"
+                placement="bottom"
+                effect="light">
+
+                <div class="avatar" v-show="!isCollapse">
+                    <el-avatar :size="60" src="https://empty" @error="errorHandler">
+                        <img
+                            :src="$store.getters.getUser.avatar"/>
+                    </el-avatar>
+                </div>
+
+            </el-tooltip>
+            
         </el-menu-item>
 
         <div class="flex-grow"/>
@@ -101,5 +110,6 @@ export default {
 }
 .avatar{
     margin-top: 5px;
+
 }
 </style>

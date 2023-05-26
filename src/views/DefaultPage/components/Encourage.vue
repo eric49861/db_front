@@ -13,7 +13,7 @@ export default {
     name: "Encourage",
     data() {
         return {
-            statement: ['学习需要不断的坚持与探索, 欢迎回来 Eric']
+            statement: [`学习需要不断的坚持与探索, 欢迎回来 ${this.$store.getters.getUser.name}`]
         }
     }
 }
