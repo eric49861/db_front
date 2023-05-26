@@ -1,56 +1,59 @@
 <template>
     <el-menu default-active="1" class="el-menu-vertical-demo" :collapse="isCollapse" @select="selectHandler">
         <el-menu-item index="0">
-            
-            <el-tooltip
-                :disabled="disabled"
-                :content="$store.getters.getUser.name"
-                placement="bottom"
-                effect="light">
+
+            <el-tooltip :disabled="disabled" :content="$store.getters.getUser.username" placement="bottom" effect="light">
 
                 <div class="avatar" v-show="!isCollapse">
                     <el-avatar :size="60" src="https://empty" @error="errorHandler">
-                        <img
-                            :src="$store.getters.getUser.avatar"/>
+                        <img :src="$store.getters.getUser.avatar" />
                     </el-avatar>
                 </div>
 
             </el-tooltip>
-            
+
         </el-menu-item>
 
-        <div class="flex-grow"/>
+        <div class="flex-grow" />
         <el-menu-item index="1">
-            <el-icon><Promotion /></el-icon>
+            <el-icon>
+                <Promotion />
+            </el-icon>
             <template #title>首页</template>
         </el-menu-item>
 
         <el-menu-item index="2">
-            <el-icon><Search /></el-icon>
+            <el-icon>
+                <Search />
+            </el-icon>
             <template #title>探索</template>
         </el-menu-item>
 
         <el-menu-item index="3">
-            <el-icon><View /></el-icon>
+            <el-icon>
+                <View />
+            </el-icon>
             <template #title>空间</template>
         </el-menu-item>
 
         <el-menu-item index="4">
-            <el-icon><Share /></el-icon>
+            <el-icon>
+                <Share />
+            </el-icon>
             <template #title>活动</template>
         </el-menu-item>
 
         <el-menu-item index="5">
-                <el-icon>
-                    <User />
-                </el-icon>
-                <template #title>我的</template>
-            </el-menu-item>
+            <el-icon>
+                <User />
+            </el-icon>
+            <template #title>我的</template>
+        </el-menu-item>
         <div class="flex-grow" />
         <el-menu-item index="6" @click="isCollapse = !isCollapse">
             <el-icon>
-                <ArrowRight v-show="isCollapse"/>
-                <ArrowLeft v-show="!isCollapse"/>
+                <ArrowRight v-show="isCollapse" />
+                <ArrowLeft v-show="!isCollapse" />
             </el-icon>
         </el-menu-item>
     </el-menu>
@@ -60,7 +63,7 @@
 import { ref } from 'vue'
 
 export default {
-    name:"SideBar",
+    name: "SideBar",
     components: {
     },
     data() {
@@ -71,7 +74,7 @@ export default {
     methods: {
         selectHandler(key, keyPath) {
             console.log(key, ": ", keyPath)
-            switch(key){
+            switch (key) {
                 case '1':
                     this.$router.push("/index/default-page")
                     break
@@ -88,7 +91,7 @@ export default {
                     this.$router.push("/index/me")
                     break
                 default:
-                    //do nothing
+                //do nothing
             }
         }
     }
@@ -96,20 +99,22 @@ export default {
 </script>
 
 <style>
-.flex-grow{
+.flex-grow {
     flex-grow: 1;
 }
+
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 100px;
     min-height: 400px;
 }
-.el-menu-vertical-demo{
+
+.el-menu-vertical-demo {
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
-.avatar{
+
+.avatar {
     margin-top: 5px;
 
-}
-</style>
+}</style>

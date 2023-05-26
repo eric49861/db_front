@@ -115,7 +115,7 @@ router.beforeEach((to, from, next) => {
     } else {
         //检查是否有token
         let tokenString = store.getters.getTokenString
-        if (tokenString == null) {
+        if (tokenString == "") {
             alert("请先进行登录")
         } else {
             //检查token是否有效，防止用户篡改
