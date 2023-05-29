@@ -5,7 +5,7 @@
             <el-tooltip :disabled="disabled" :content="$store.getters.getUser.username" placement="bottom" effect="light">
 
                 <div class="avatar" v-show="!isCollapse">
-                    <el-avatar :size="60" src="https://empty" @error="errorHandler">
+                    <el-avatar :size="60" @error="errorHandler">
                         <img :src="$store.getters.getUser.avatar" />
                     </el-avatar>
                 </div>
@@ -117,4 +117,5 @@ export default {
 .avatar {
     margin-top: 5px;
 
-}</style>
+}
+</style>
