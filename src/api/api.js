@@ -35,6 +35,22 @@ export default {
             }
         })
     },
+    modifyUserInfo: (form) => {
+        return service({
+            url: "v1/2/modify-user-info",
+            method: "POST",
+            data: {
+                id: store.getters.getUserId,
+                username: form.username,
+                password: form.password,
+                age: form.age,
+                gender: form.gender,
+                occupation: form.occupation,
+                signature: form.signature
+            }
+        })
+
+    },
     getIngGroup: () => {
         return service({
             url: "/v1/getGroup/ing",

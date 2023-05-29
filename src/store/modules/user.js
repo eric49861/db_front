@@ -14,7 +14,44 @@ const user = {
         },
         getUserId(state) {
             return state.user.id
-        }
+        },
+        getUsername(state) {
+            return state.user.username
+        },
+        // 获取用户的密码(并不是明码)
+        getUserPassword(state) {
+            return state.user.password
+        },
+        getUserAvatar(state) {
+            return state.user.avatar
+        },
+        getUserGender(state) {
+            return state.user.gender
+        },
+        getUserAge(state) {
+            return state.user.age
+        },
+        getUserSignature(state) {
+            return state.user.signature
+        },
+        getUserQQ(state) {
+            return state.user.qq
+        },
+        getUserIntegral(state) {
+            return state.user.integral
+        },
+        getUserStudyTime(state) {
+            return state.user.studyTime
+        },
+        getUserOccupation(state) {
+            return state.user.occupation
+        },
+        getUserCreateTime(state) {
+            return state.user.createTime
+        },
+        getUserUpdateTime(state) {
+            return state.user.updateTime
+        },
     },
     mutations: {
         updateUser(state, user) {
@@ -61,6 +98,18 @@ const user = {
                 } else if (res.data.code == 401) {
                     //用户名已被占用
                     alert(res.data.msg)
+                }
+            })
+        },
+        //用户修改个人信息
+        asyncModifyUserInfo(context, form) {
+            api.modifyUserInfo(form).catch(err => {
+                return Promise.reject(err)
+            }).then(res => {
+                if (res.data.code == 200) {
+                    alert(res.data.msg)
+                    //更新用户信息
+                    context.commit("updateUser", res.data.user)
                 }
             })
         }

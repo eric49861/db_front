@@ -3,7 +3,7 @@ import axios from "axios";
 import store from "../store/index"
 
 const service = axios.create({
-    baseURL: "http://192.168.1.101:8888/",
+    baseURL: "http://192.168.0.149:8888/",
     timeout: 5000,
     headers: {
         "Content-Type": "application/json;charset=utf-8;multipart/form-data;"
